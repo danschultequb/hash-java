@@ -11,7 +11,7 @@ public interface HashFunction extends Disposable
      */
     public static Result<? extends HashFunction> createMD5()
     {
-        return MessageDigestHashFunction.create("MD5");
+        return JavaMessageDigestHashFunction.create("MD5");
     }
 
     /**
@@ -19,7 +19,7 @@ public interface HashFunction extends Disposable
      */
     public static Result<? extends HashFunction> createSHA1()
     {
-        return MessageDigestHashFunction.create("SHA1");
+        return JavaMessageDigestHashFunction.create("SHA1");
     }
 
     /**
@@ -27,7 +27,7 @@ public interface HashFunction extends Disposable
      */
     public static Result<? extends HashFunction> createSHA256()
     {
-        return MessageDigestHashFunction.create("SHA256");
+        return JavaMessageDigestHashFunction.create("SHA256");
     }
 
     /**

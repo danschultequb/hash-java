@@ -155,7 +155,7 @@ public interface HashFunctionByteReadStreamTests
                             for (int i = 0; i < 2; i++)
                             {
                                 test.assertThrows(() -> stream.readByte().await(),
-                                    new EndOfStreamException());
+                                    new EmptyException());
                             }
 
                             test.assertEqual(expected, stream.takeDigest().toHexString());
@@ -182,7 +182,7 @@ public interface HashFunctionByteReadStreamTests
                             Integer bytesRead = 0;
                             while (bytesRead != null)
                             {
-                                bytesRead = stream.readBytes(buffer, 5, 73).catchError(EndOfStreamException.class).await();
+                                bytesRead = stream.readBytes(buffer, 5, 73).catchError(EmptyException.class).await();
                                 if (bytesRead != null)
                                 {
                                     test.assertTrue(1 <= bytesRead && bytesRead <= 73);
@@ -192,7 +192,7 @@ public interface HashFunctionByteReadStreamTests
                             for (int i = 0; i < 2; i++)
                             {
                                 test.assertThrows(() -> stream.readBytes(buffer, 5, 73).await(),
-                                    new EndOfStreamException());
+                                    new EmptyException());
                             }
 
                             test.assertEqual(expected, stream.takeDigest().toHexString());

@@ -1,11 +1,11 @@
 package qub;
 
-public class MessageDigestHashFunction implements HashFunction
+public class JavaMessageDigestHashFunction implements HashFunction
 {
     private final java.security.MessageDigest messageDigest;
     private boolean disposed;
 
-    private MessageDigestHashFunction(String algorithm)
+    private JavaMessageDigestHashFunction(String algorithm)
     {
         PreCondition.assertNotNullAndNotEmpty(algorithm, "algorithm");
 
@@ -19,18 +19,18 @@ public class MessageDigestHashFunction implements HashFunction
         }
     }
 
-    public static Result<MessageDigestHashFunction> create(String algorithm)
+    public static Result<JavaMessageDigestHashFunction> create(String algorithm)
     {
         PreCondition.assertNotNullAndNotEmpty(algorithm, "algorithm");
 
         return Result.create(() ->
         {
-            return new MessageDigestHashFunction(algorithm);
+            return new JavaMessageDigestHashFunction(algorithm);
         });
     }
 
     /**
-     * Get the name of the algorithm that this {@link MessageDigestHashFunction} is using.
+     * Get the name of the algorithm that this {@link JavaMessageDigestHashFunction} is using.
      */
     public String getAlgorithm()
     {

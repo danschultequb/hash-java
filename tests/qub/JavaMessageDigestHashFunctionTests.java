@@ -1,10 +1,10 @@
 package qub;
 
-public interface MessageDigestHashFunctionTests
+public interface JavaMessageDigestHashFunctionTests
 {
     public static void test(TestRunner runner)
     {
-        runner.testGroup(MessageDigestHashFunction.class, () ->
+        runner.testGroup(JavaMessageDigestHashFunction.class, () ->
         {
             runner.testGroup("create(String)", () ->
             {
@@ -12,7 +12,7 @@ public interface MessageDigestHashFunctionTests
                 {
                     runner.test("with " + Strings.escapeAndQuote(algorithm), (Test test) ->
                     {
-                        test.assertThrows(() -> MessageDigestHashFunction.create(algorithm).await(),
+                        test.assertThrows(() -> JavaMessageDigestHashFunction.create(algorithm).await(),
                             expected);
                     });
                 };
@@ -26,7 +26,7 @@ public interface MessageDigestHashFunctionTests
                 {
                     runner.test("with " + Strings.escapeAndQuote(algorithm), (Test test) ->
                     {
-                        final MessageDigestHashFunction hashFunction = MessageDigestHashFunction.create(algorithm).await();
+                        final JavaMessageDigestHashFunction hashFunction = JavaMessageDigestHashFunction.create(algorithm).await();
                         test.assertNotNull(hashFunction);
                         test.assertEqual(algorithm, hashFunction.getAlgorithm());
                     });
@@ -45,7 +45,7 @@ public interface MessageDigestHashFunctionTests
                 createTest.run("sHa256");
             });
 
-            HashFunctionTests.test(runner, () -> MessageDigestHashFunction.create("MD5").await());
+            HashFunctionTests.test(runner, () -> JavaMessageDigestHashFunction.create("MD5").await());
         });
     }
 }
